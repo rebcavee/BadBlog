@@ -1,0 +1,19 @@
+---
+title: Salutations!
+author: Rebecca Voulgarakis
+date: '2017-10-29'
+slug: salutations
+categories: []
+tags: []
+---
+
+Hello world,
+
+I'm in my last year living the bunhead life at Mercyhurst University—while this makes me an expert at surviving 12-hour school days on Clif bars and prayers alone, I have a lot to learn before I graduate. The material you encounter in this blog will primarily consist of my efforts to learn by teaching. 
+
+To engage with my journey to unleashing the full extent of my data visualization superpowers, you'll need the following:
+
+1. RStudio, with the Lahman, sqldf, and ggplot2 packages loaded
+2. Some patience
+
+Thanks for visiting. Feel free to check out my social media while you're here. There's exciting content coming soon.
