@@ -1,0 +1,30 @@
+---
+title: Scatter Plots
+author: Rebecca Voulgarakis
+date: '2017-10-29'
+slug: scatter-plots
+categories:
+  - R
+tags:
+  - plot
+  - R Markdown
+---
+
+Let's start our data visualization adventures with the scatter plot. Hypothetically speaking, if we wanted to look at home runs vs. strikeouts for some of baseball's biggest stars, we could look at those relationships with a scatter plot.
+
+First, we'll need to load the necessary packages for this session:
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+Let's say we only want to see home runs and strikeouts for players who had more than 500 home runs in their careers.
+```{r}
+query<-"SELECT playerID,sum(HR),sum(SO)
+FROM Batting
+GROUP BY playerID
+HAVING sum(HR)>500"
+
+sqldf(query)
+```

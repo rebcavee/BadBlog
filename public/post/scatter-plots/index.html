@@ -45,37 +45,83 @@
         <article class="post">
             <a class="btn home" href="/" title="Back to home">&laquo; Back to home</a>
             
-<h1><a href="/post/salutations/" title="Salutations!">Salutations!</a></h1>
+<h1><a href="/post/scatter-plots/" title="Scatter Plots">Scatter Plots</a></h1>
 
 <footer class="post-info">Posted on <span class="post-meta"><time datetime="2017.10.29">2017.10.29</time>
 
+    &middot; Tagged in
+        
+        <a href="/tags/plot">plot</a>, 
+        
+        <a href="/tags/r-markdown">r markdown</a>
+        
     
 
 </span>
 </footer>
 
-            <p>Hello world,</p>
-<p>I’m in my last year living the bunhead life at Mercyhurst University—while this makes me an expert at surviving 12-hour school days on Clif bars and prayers alone, I have a lot to learn before I graduate. The material you encounter in this blog will primarily consist of my efforts to learn by teaching.</p>
-<p>To engage with my journey to unleashing the full extent of my data visualization superpowers, you’ll need the following:</p>
-<ol style="list-style-type: decimal">
-<li>RStudio, with the Lahman, sqldf, and ggplot2 packages loaded</li>
-<li>Some patience</li>
-</ol>
-<p>Thanks for visiting. Feel free to check out my social media while you’re here. There’s exciting content coming soon.</p>
+            <p>Let’s start our data visualization adventures with the scatter plot. Hypothetically speaking, if we wanted to look at home runs vs. strikeouts for some of baseball’s biggest stars, we could look at those relationships with a scatter plot.</p>
+<p>First, we’ll need to load the necessary packages for this session:</p>
+<pre class="r"><code>library(Lahman)
+library(sqldf)</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object &#39;/Library/Frameworks/R.framework/Resources/modules//R_X11.so&#39;:
+##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib
+##   Referenced from: /Library/Frameworks/R.framework/Resources/modules//R_X11.so
+##   Reason: image not found</code></pre>
+<pre><code>## Could not load tcltk.  Will use slower R code instead.</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<p>Let’s say we only want to see home runs and strikeouts for players who had more than 500 home runs in their careers.</p>
+<pre class="r"><code>query&lt;-&quot;SELECT playerID,sum(HR),sum(SO)
+FROM Batting
+GROUP BY playerID
+HAVING sum(HR)&gt;500&quot;
+
+sqldf(query)</code></pre>
+<pre><code>##     playerID sum(HR) sum(SO)
+## 1  aaronha01     755    1383
+## 2  bankser01     512    1236
+## 3  bondsba01     762    1539
+## 4   foxxji01     534    1311
+## 5  griffke02     630    1779
+## 6  jacksre01     563    2597
+## 7  killeha01     573    1699
+## 8  mantlmi01     536    1710
+## 9  matheed01     512    1487
+## 10  mayswi01     660    1526
+## 11 mccovwi01     521    1550
+## 12 mcgwima01     583    1596
+## 13 murraed02     504    1516
+## 14 ortizda01     541    1750
+## 15   ottme01     511     896
+## 16 palmera01     569    1348
+## 17 pujolal01     591    1053
+## 18 ramirma02     555    1813
+## 19 robinfr02     586    1532
+## 20 rodrial01     696    2287
+## 21  ruthba01     714    1330
+## 22 schmimi01     548    1883
+## 23 sheffga01     509    1171
+## 24  sosasa01     609    2306
+## 25 thomafr04     521    1397
+## 26 thomeji01     612    2548
+## 27 willite01     521     709</code></pre>
 
             <ul class="share-buttons">
     <li>Share this article:</li>
     <li>
-        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fsalutations%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
+        <a class="icon-facebook-squared" href="https://www.facebook.com/sharer/sharer.php?u=%2fpost%2fscatter-plots%2f" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook"></a>
     </li>
     <li>
-        <a class="icon-twitter" href="https://twitter.com/share?text=Salutations%21&amp;url=%2fpost%2fsalutations%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
+        <a class="icon-twitter" href="https://twitter.com/share?text=Scatter%20Plots&amp;url=%2fpost%2fscatter-plots%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Tweet this article"></a>
     </li>
     <li>
-        <a class="icon-gplus" href="https://plus.google.com/share?url=%2fpost%2fsalutations%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
+        <a class="icon-gplus" href="https://plus.google.com/share?url=%2fpost%2fscatter-plots%2f" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google&#43;"></a>
     </li>
     <li>
-        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=%2fpost%2fsalutations%2f&title=Salutations%21" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
+        <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=%2fpost%2fscatter-plots%2f&title=Scatter%20Plots" onclick="window.open(this.href, 'linkedin-share', 'width=600,height=494');return false;" title="Share on Linkedin"></a>
     </li>
 </ul>
 
