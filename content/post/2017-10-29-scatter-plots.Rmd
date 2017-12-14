@@ -21,10 +21,21 @@ library(ggplot2)
 
 Let's say we only want to see home runs and strikeouts for players who had more than 500 home runs in their careers.
 ```{r}
-query<-"SELECT playerID,sum(HR),sum(SO)
+query<-"SELECT playerID,sum(HR) AS CareerHR,sum(SO) AS CareerSO
 FROM Batting
 GROUP BY playerID
 HAVING sum(HR)>500"
 
-sqldf(query)
+result<-sqldf(query)
 ```
+
+This gives us all the players we want and stores the info as "result," which will make the process of visualizing the data easier. Speaking of which, let's visualize our data like so:
+
+```{r}
+ggplot()+
+  geom_point(data=result,aes(x=CareerSO,y=CareerHR),size=3,color="blue")+
+  ggtitle("Career Strikeouts vs. Home Runs for the Greatest Hitters")+
+  xlab("Career Strikeouts")+
+  ylab("Career Home Runs")
+```
+
