@@ -1,0 +1,29 @@
+---
+title: Bar Plots
+author: Rebecca Voulgarakis
+date: '2017-12-14'
+slug: bar-plots
+categories:
+  - R
+  - Data Visualization
+tags: []
+---
+Welcome back! Time to make some bar plots.
+
+Let's say we want to make a bar plot showing the MLB pitchers who had the most wins. We could find the data we need by doing:
+
+```{r}
+query<-"SELECT nameLast,sum(W) AS career_W
+FROM Master INNER JOIN Pitching
+ON Master.playerID=Pitching.playerID
+GROUP BY Master.playerID
+HAVING sum(W)>370"
+```
+
+Now, let's visualize our data with ggplot2:
+
+```{r}
+ggplot()+
+  geom_bar(data=result,aes(x=nameLast,y=career_W), stat='identity')
+```
+
