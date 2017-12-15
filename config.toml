@@ -1,6 +1,6 @@
 baseurl = "https://voulgarakisblog.netlify.com/"
 languageCode = "en-us"
-title = "John Doe's blog"
+title = "Rebecca Voulgarakis's blog"
 # Define how many pages appear per site
 paginate = 10
 # Enable comments powered by Disqus by entering your disqus shortname
